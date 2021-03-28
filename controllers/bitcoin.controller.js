@@ -17,13 +17,15 @@ exports.saveCurrentPrice = (req, res) => {
         timestamp: response.data.timestamp,
        });
 
-      console.log(latest_bitcoin_price);
-
+       res.json({ message: "bitcoin price saved succesfully" });
+       
     }).catch((e) => {
-      console.log(e);
+      return res.status(400).send({ 
+        code: 400,
+        message: "error in retrieving bitcoin prices" });
     })
 
-    res.json({ message: "latest updated" });
+    
 };
 
 // Fetch Price
