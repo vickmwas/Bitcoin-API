@@ -1,10 +1,7 @@
 steps:
 - name: node:14.15.5
   entrypoint: npm
-  args: ["install"]
-- name: node:14.15.5
-  entrypoint: npm
-  args: ["run", "create-env"]
+  args: ["install","run", "create-env"]
   env:
     - 'MY_SECRET_KEY=${_MY_SECRET_KEY}'
     - 'DB_HOST=${_DB_HOST}'
