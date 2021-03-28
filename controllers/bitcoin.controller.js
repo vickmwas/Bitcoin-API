@@ -3,9 +3,12 @@ const db = require("../models");
 const BitcoinPrice = db.BitcoinPrice;
 
 exports.saveCurrentPrice = (req, res) => {
+
+   
     axios.get('https://api.bitfinex.com/v1/pubticker/btcusd').then((response) => {
       console.log(response.data);
 
+      //fetch the price details from the response, and populate the Bitcoin Price model, and save to the database
       let latest_bitcoin_price = BitcoinPrice.create({
         mid: response.data.mid,
         bid: response.data.bid,

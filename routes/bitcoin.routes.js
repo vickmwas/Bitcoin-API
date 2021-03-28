@@ -4,8 +4,11 @@ module.exports = app => {
 
     var router = require("express").Router();
     
-    router.get("/fetch", bitcoin.fetchPrice);
+    //Get Endpoint to query the Bitcoin Prices from our the Bitfinex website
     router.get("/save", bitcoin.saveCurrentPrice);
+
+    //Get Endpoint to fetch the Bitcoin Prices from our Database
+    router.get("/fetch", bitcoin.fetchPrice);
 
     // cron.schedule("* * * * *", bitcoin.saveCurrentPrice);
   
