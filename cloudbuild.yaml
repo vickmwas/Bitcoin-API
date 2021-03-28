@@ -9,9 +9,6 @@ steps:
     - 'DB_PASSWORD=${_DB_PASSWORD}'
     - 'DB_PORT=${_DB_PORT}'
     - 'DB_DATABASE=${_DB_DATABASE}'
-- name: "sequelize"
-  entrypoint: node_modules/sequelize-cli/lib/sequelize
-  args: ["db:migrate"]
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
 timeout: "1600s"
