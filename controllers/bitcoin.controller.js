@@ -29,13 +29,13 @@ exports.saveCurrentPrice = (req, res) => {
 // Fetch Price
 exports.fetchPrice = (req,res) => {
  let latest_prices = BitcoinPrice.findAll({
-    limit: 1,
+    limit: 2,
     order: [ [ 'createdAt', 'DESC' ]]
   }).then(function(entries){
     let response = {
       "current_price" : entries[0],
       "previous_price": entries[1]
     }
-    res.json(entries[0]);
+    res.json(response);
   }); 
 };
