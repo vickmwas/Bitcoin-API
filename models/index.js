@@ -5,7 +5,10 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
+const dbSocketPath = process.env.DB_SOCKET_PATH || '/cloudsql';
 const config = require(__dirname + '/../config/config.js')[env];
+config.socketPath = `${dbSocketPath}/${process.env.CLOUD_SQL_CONNECTION_NAME}`;
+console.log(config);
 const db = {};
 
 let sequelize;
