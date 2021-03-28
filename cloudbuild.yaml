@@ -1,7 +1,7 @@
 steps:
 - name: node:14.15.5
   entrypoint: npm
-  args: ["install","run", "create-env"]
+  args: ["install", "run", "create-env"]
   env:
     - 'MY_SECRET_KEY=${_MY_SECRET_KEY}'
     - 'DB_HOST=${_DB_HOST}'
@@ -9,6 +9,9 @@ steps:
     - 'DB_PASSWORD=${_DB_PASSWORD}'
     - 'DB_PORT=${_DB_PORT}'
     - 'DB_DATABASE=${_DB_DATABASE}'
+- name: "sequelize"
+  entrypoint: node_modules/sequelize-cli/lib/sequelize
+  args: ["db:migrate"]
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
 timeout: "1600s"
